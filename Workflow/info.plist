@@ -810,7 +810,7 @@ Search active processes, live sorted by CPU or memory usage, via the `axe` keywo
 		<string>3</string>
 	</dict>
 	<key>version</key>
-	<string>2025.2</string>
+	<string>2025.3</string>
 	<key>webaddress</key>
 	<string>https://github.com/vitorgalvao/axe-processes-workflow/</string>
 </dict>
