@@ -310,11 +310,12 @@ function runCommand(...arguments) {
   return stringOut
 }
 
-const processes = runCommand("ps", `-${envVar("sort_by_flag")}`, "-Ao", "%cpu=,%mem=,pid=,command=")
+const processes = runCommand("ps", `-${envVar("sort_by_flag")}`, "-Ao", "%cpu=,rss=,pid=,command=")
   .split("\n")
   .slice(0, -1)
   .map(item =&gt; {
     const fields = item.split(" ").filter(field =&gt; field)
+    const memory = parseInt(fields[1] / 1024)
     const fullCommand = fields.slice(3).join(" ")
     const splitCommand = fullCommand.split("/")
 
@@ -336,7 +337,7 @@ const processes = runCommand("ps", `-${envVar("sort_by_flag")}`, "-Ao", "%cpu=,%
 
     return {
       cpu: fields[0],
-      memory: fields[1],
+      memory: memory,
       pid: fields[2],
       fullCommand: fullCommand,
       commandName: commandName,
@@ -352,12 +353,12 @@ function run(argv) {
   const sfItems = processes.flatMap(process =&gt; {
     if (argv[0] &amp;&amp; !new RegExp(argv[0], "i").test(process.fullCommand)) return []
     if (process.pid == $.NSProcessInfo.processInfo.processIdentifier) return [] // Ignore this script
-
+if (process.fullCommand.match(/Alfred/)) return []
     return {
       variables: { full_command: process.fullCommand },
       uid: process.pid,
       title: process.commandName,
-      subtitle: `CPU: ${process.cpu}% · Memory: ${process.memory}% · PID: ${process.pid}`,
+      subtitle: `CPU: ${process.cpu}% · Memory: ${process.memory} MB · PID: ${process.pid}`,
       arg: process.pid,
       icon: { path: process.icon, type: "fileicon" },
       mods: {
