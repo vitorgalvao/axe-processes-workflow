@@ -310,7 +310,7 @@ function runCommand(...arguments) {
   return stringOut
 }
 
-const processes = runCommand("ps", `-${envVar("sort_by_flag")}`, "-Ao", "%cpu=,rss=,pid=,command=")
+const processes = runCommand("ps", `-${envVar("sort_by_flag")}`, "-Ao", "%cpu=,rss=,pid=,comm=")
   .split("\n")
   .slice(0, -1)
   .map(item =&gt; {
