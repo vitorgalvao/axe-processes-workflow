@@ -353,7 +353,8 @@ function run(argv) {
   const sfItems = processes.flatMap(process =&gt; {
     if (argv[0] &amp;&amp; !new RegExp(argv[0], "i").test(process.fullCommand)) return []
     if (process.pid == $.NSProcessInfo.processInfo.processIdentifier) return [] // Ignore this script
-if (process.fullCommand.match(/Alfred/)) return []
+    if (process.fullCommand.match(/Alfred/)) return []
+
     return {
       variables: { full_command: process.fullCommand },
       uid: process.pid,
