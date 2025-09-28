@@ -10,10 +10,10 @@ Search active processes, live sorted by CPU or memory usage, via the `axe` keywo
 
 ![Listing processes](Workflow/images/about/axe.png)
 
-* <kbd>↩&#xFE0E;</kbd> Ask process to terminate with TERM (software termination signal).
-* <kbd>⌘</kbd><kbd>↩&#xFE0E;</kbd> Force process to terminate with KILL (non-catchable, non-ignorable kill).
-* <kbd>⌥</kbd><kbd>↩&#xFE0E;</kbd> Flip sorting between CPU and memory usage.
-* <kbd>⇧</kbd><kbd>↩&#xFE0E;</kbd> Pause or resume live monitoring.
-* <kbd>⌃</kbd><kbd>↩&#xFE0E;</kbd> View full command in Text View.
+* <kbd>↩</kbd> Ask process to terminate with TERM (software termination signal).
+* <kbd>⌘</kbd><kbd>↩</kbd> Force process to terminate with KILL (non-catchable, non-ignorable kill).
+* <kbd>⌥</kbd><kbd>↩</kbd> Flip sorting between CPU and memory usage.
+* <kbd>⇧</kbd><kbd>↩</kbd> Pause or resume live monitoring.
+* <kbd>⌃</kbd><kbd>↩</kbd> View full command in Text View.
 
 ![Viewing full command](Workflow/images/about/full.png)
